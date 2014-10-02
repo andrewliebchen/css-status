@@ -4,9 +4,26 @@
 
 <body>
   {{> cssInput}}
+  <hr/>
+  {{> cssOutput}}
 </body>
 
 <template name="cssInput">
-  <textarea id="css_input"></textarea>
-  <button id="submit_css_input">Parse</button>
+  <div>
+    <textarea id="css_input"></textarea>
+    <button id="submit_css_input">Parse</button>
+  </div>
+</template>
+
+<template name="cssOutput">
+  <div>
+    {{#each stylesheet}}
+      {{#each rules}}
+        <b>{{selectors}}</b><br/>
+        {{#each declarations}}
+          {{property}}: {{value}}<br/>
+        {{/each}}
+      {{/each}}
+    {{/each}}
+  </div>
 </template>
